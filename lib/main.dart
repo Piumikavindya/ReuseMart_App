@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:reusemart_app/consts/theme_data.dart';
 import 'package:reusemart_app/provider/dark_theme_provider.dart';
+import 'package:reusemart_app/screens/botton_bar.dart';
 import 'package:reusemart_app/screens/home_screen.dart';
 
 void main() {
@@ -25,8 +26,8 @@ class _MyAppState extends State<MyApp> {
   DarkThemeProvider themeChangeProvider = DarkThemeProvider();
 
   void getCurrentAppTheme() async {
-    themeChangeProvider.SetDarkTheme =
-        await themeChangeProvider.darkThemePrefs.getTheme();
+    themeChangeProvider.SetDarkTheme = await themeChangeProvider.darkThemePrefs
+        .getTheme(); // fetching the theme from shared preferences
   }
 
   @override
@@ -50,7 +51,7 @@ class _MyAppState extends State<MyApp> {
           debugShowCheckedModeBanner: false,
           title: 'Flutter Demo',
           theme: Styles.themeData(themeProvider.getDarkTheme, context),
-          home: const HomeScreen(),
+          home: const BottomBarScreen(),
         );
       }),
     );

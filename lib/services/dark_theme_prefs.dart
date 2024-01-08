@@ -12,3 +12,4 @@ class DarkThemePrefs {
     return prefs.getBool(THEME_STATUS) ?? false;
   }
 }
+// fetch the last applied theme from shared preferences
