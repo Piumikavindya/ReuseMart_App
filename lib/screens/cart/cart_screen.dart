@@ -1,10 +1,10 @@
-// ignore_for_file: dead_code
-
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:reusemart_app/screens/cart/cart_widget.dart';
 import 'package:reusemart_app/widgets/text_widget.dart';
+import 'package:provider/provider.dart';
 
+import '../../providers/cart_provider.dart';
 import '../../services/global_methods.dart';
 import '../../services/utils.dart';
 import '../../widgets/empty_screen.dart';
@@ -15,11 +15,11 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
-    // ignore: unused_local_variable
     Size size = Utils(context).getScreenSize;
-    // ignore: no_leading_underscores_for_local_identifiers
-    bool _isEmpty = true;
-    return _isEmpty
+    final cartProvider = Provider.of<CartProvider>(context);
+    final cartItemsList =
+        cartProvider.getCartItems.values.toList().reversed.toList();
+    return cartItemsList.isEmpty
         ? const EmptyScreen(
             title: 'Your cart is empty',
             subtitle: 'Add something and make me happy :)',
@@ -31,7 +31,7 @@ class CartScreen extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 title: TextWidget(
-                  text: 'Cart (2)',
+                  text: 'Cart (${cartItemsList.length})',
                   color: color,
                   isTitle: true,
                   textSize: 22,
@@ -42,7 +42,9 @@ class CartScreen extends StatelessWidget {
                       GlobalMethods.warningDialog(
                           title: 'Empty your cart?',
                           subtitle: 'Are you sure?',
-                          fct: () {},
+                          fct: () {
+                            cartProvider.clearCart();
+                          },
                           context: context);
                     },
                     icon: Icon(
@@ -56,9 +58,13 @@ class CartScreen extends StatelessWidget {
                 _checkout(ctx: context),
                 Expanded(
                   child: ListView.builder(
-                    itemCount: 10,
+                    itemCount: cartItemsList.length,
                     itemBuilder: (ctx, index) {
-                      return const CartWidget();
+                      return ChangeNotifierProvider.value(
+                          value: cartItemsList[index],
+                          child: CartWidget(
+                            q: cartItemsList[index].quantity,
+                          ));
                     },
                   ),
                 ),

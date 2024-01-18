@@ -1,11 +1,11 @@
-// ignore_for_file: unused_import, no_leading_underscores_for_local_identifiers
-
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:reusemart_app/providers/wishlist_provider.dart';
 import 'package:reusemart_app/screens/cart/cart_widget.dart';
 import 'package:reusemart_app/widgets/empty_screen.dart';
 import 'package:reusemart_app/widgets/text_widget.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:provider/provider.dart';
 import '../../services/global_methods.dart';
 import '../../services/utils.dart';
 import '../../widgets/back_widget.dart';
@@ -18,17 +18,17 @@ class WishlistScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
-    // ignore: unused_local_variable
     Size size = Utils(context).getScreenSize;
-    bool _isEmpty = true;
-    return _isEmpty
+    final wishlistProvider = Provider.of<WishlistProvider>(context);
+    final wishlistItemsList =
+        wishlistProvider.getWishlistItems.values.toList().reversed.toList();
+    return wishlistItemsList.isEmpty
         ? const EmptyScreen(
             title: 'Your Wishlist Is Empty',
             subtitle: 'Explore more and shortlist some items',
             imagePath: 'assets/images/wishlist.png',
             buttonText: 'Add a wish',
           )
-        // ignore: dead_code
         : Scaffold(
             appBar: AppBar(
                 centerTitle: true,
@@ -37,7 +37,7 @@ class WishlistScreen extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 title: TextWidget(
-                  text: 'Wishlist (2)',
+                  text: 'Wishlist (${wishlistItemsList.length})',
                   color: color,
                   isTitle: true,
                   textSize: 22,
@@ -48,7 +48,9 @@ class WishlistScreen extends StatelessWidget {
                       GlobalMethods.warningDialog(
                           title: 'Empty your wishlist?',
                           subtitle: 'Are you sure?',
-                          fct: () {},
+                          fct: () {
+                            wishlistProvider.clearWishlist();
+                          },
                           context: context);
                     },
                     icon: Icon(
@@ -58,11 +60,14 @@ class WishlistScreen extends StatelessWidget {
                   ),
                 ]),
             body: MasonryGridView.count(
+              itemCount: wishlistItemsList.length,
               crossAxisCount: 2,
               // mainAxisSpacing: 16,
               // crossAxisSpacing: 20,
               itemBuilder: (context, index) {
-                return const WishlistWidget();
+                return ChangeNotifierProvider.value(
+                    value: wishlistItemsList[index],
+                    child: const WishlistWidget());
               },
             ));
   }

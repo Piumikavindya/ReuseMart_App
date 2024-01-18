@@ -50,12 +50,12 @@ class CategoriesScreen extends StatelessWidget {
           ),
         ),
         body: Padding(
-          padding: const EdgeInsets.all(12.0),
+          padding: const EdgeInsets.all(8.0),
           child: GridView.count(
             crossAxisCount: 2,
-            childAspectRatio: 240 / 280,
-            crossAxisSpacing: 30, // Vertical spacing
-            mainAxisSpacing: 35, // Horizontal spacing
+            childAspectRatio: 240 / 250,
+            crossAxisSpacing: 10, // Vertical spacing
+            mainAxisSpacing: 10, // Horizontal spacing
             children: List.generate(4, (index) {
               return CategoriesWidget(
                 catText: catInfo[index]['catText'],

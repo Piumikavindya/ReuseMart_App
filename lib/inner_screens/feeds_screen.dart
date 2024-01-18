@@ -92,7 +92,7 @@ class _FeedsScreenState extends State<FeedsScreen> {
             crossAxisCount: 2,
             padding: EdgeInsets.zero,
             // crossAxisSpacing: 10,
-            childAspectRatio: size.width / (size.height * 0.7),
+            childAspectRatio: size.width / (size.height * 0.8),
             children: List.generate(allProducts.length, (index) {
               return ChangeNotifierProvider.value(
                 value: allProducts[index],

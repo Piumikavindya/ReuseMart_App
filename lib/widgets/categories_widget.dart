@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reusemart_app/inner_screens/cat_screen.dart';
 import 'package:reusemart_app/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -17,13 +18,12 @@ class CategoriesWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     // Size size = MediaQuery.of(context).size;
     final themeState = Provider.of<DarkThemeProvider>(context);
-    // ignore: no_leading_underscores_for_local_identifiers
     double _screenWidth = MediaQuery.of(context).size.width;
     final Color color = themeState.getDarkTheme ? Colors.white : Colors.black;
     return InkWell(
       onTap: () {
-        // ignore: avoid_print
-        print('Category pressed');
+        Navigator.pushNamed(context, CategoryScreen.routeName,
+            arguments: catText);
       },
       child: Container(
         // height: _screenWidth * 0.6,

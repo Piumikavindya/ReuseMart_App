@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/cupertino.dart';
 
 import '../models/products_model.dart';
@@ -7,44 +9,61 @@ class ProductsProvider with ChangeNotifier {
     return _productsList;
   }
 
+  List<ProductModel> get getOnSaleProducts {
+    return _productsList.where((element) => element.isOnSale).toList();
+  }
+
+  ProductModel findProdById(String productId) {
+    return _productsList.firstWhere((element) => element.id == productId);
+  }
+
+  List<ProductModel> findByCategory(String categoryName) {
+    List<ProductModel> _categoryList = _productsList
+        .where((element) => element.productCategoryName
+            .toLowerCase()
+            .contains(categoryName.toLowerCase()))
+        .toList();
+    return _categoryList;
+  }
+
   static final List<ProductModel> _productsList = [
     ProductModel(
-      id: 'phone',
-      title: 'phone',
+      id: 'book',
+      title: 'book',
       price: 0.99,
       salePrice: 0.49,
-      imageUrl: 'assets/images/sale/phone.png',
-      productCategoryName: 'phone',
+      imageUrl: 'assets/images/sale/book1.png',
+      productCategoryName: 'Books',
       isOnSale: true,
       isPiece: false,
     ),
     ProductModel(
-      id: 'Avocado',
-      title: 'Avocado',
+      id: 'famaous five',
+      title: 'famaous five',
       price: 0.88,
       salePrice: 0.5,
-      imageUrl: 'assets/images/sale/phone.png',
-      productCategoryName: 'Fruits',
+      imageUrl: 'assets/images/sale/book1.png',
+      productCategoryName: 'Books',
       isOnSale: false,
       isPiece: true,
     ),
     ProductModel(
-      id: 'Black grapes',
-      title: 'Black grapes',
+      id: 'Apple',
+      title: 'Apple',
       price: 1.22,
       salePrice: 0.7,
       imageUrl: 'assets/images/sale/phone.png',
-      productCategoryName: 'Fruits',
+      productCategoryName: 'Mobiles',
       isOnSale: true,
       isPiece: false,
     ),
     ProductModel(
-      id: 'Fresh_green_grape',
-      title: 'Fresh green grape',
+      id: 'books',
+      title: 'books',
       price: 1.5,
       salePrice: 0.5,
-      imageUrl: 'assets/images/sale/phone.png',
-      productCategoryName: 'Fruits',
+      imageUrl: 'assets/images/sale/book1.png',
+      productCategoryName: 'Books',
       isOnSale: true,
       isPiece: false,
     ),

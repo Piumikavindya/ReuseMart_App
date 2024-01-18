@@ -2,6 +2,7 @@ import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:reusemart_app/inner_screens/product_details.dart';
 import 'package:reusemart_app/services/global_methods.dart';
+import 'package:provider/provider.dart';
 
 import '../../services/utils.dart';
 import '../../widgets/text_widget.dart';

@@ -1,13 +1,14 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:provider/provider.dart';
-import 'package:reusemart_app/provider/dark_theme_provider.dart';
-import 'package:reusemart_app/widgets/text_widget.dart';
-import 'package:reusemart_app/services/global_methods.dart';
 import 'package:reusemart_app/screens/orders/orders_screen.dart';
 import 'package:reusemart_app/screens/viewed_recently/viewed_recently.dart';
 import 'package:reusemart_app/screens/wishlist/wishlist_screen.dart';
+import 'package:reusemart_app/services/global_methods.dart';
+import 'package:reusemart_app/widgets/text_widget.dart';
+import 'package:provider/provider.dart';
+
+import '../provider/dark_theme_provider.dart';
 
 class UserScreen extends StatefulWidget {
   const UserScreen({Key? key}) : super(key: key);
@@ -30,20 +31,23 @@ class _UserScreenState extends State<UserScreen> {
     final themeState = Provider.of<DarkThemeProvider>(context);
     final Color color = themeState.getDarkTheme ? Colors.white : Colors.black;
     return Scaffold(
-      body: SingleChildScrollView(
+        body: Center(
+      child: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const SizedBox(height: 15),
+              const SizedBox(
+                height: 15,
+              ),
               RichText(
                 text: TextSpan(
-                  text: "Hi,   ",
+                  text: 'Hi,  ',
                   style: const TextStyle(
                     color: Colors.cyan,
-                    fontSize: 25,
+                    fontSize: 27,
                     fontWeight: FontWeight.bold,
                   ),
                   children: <TextSpan>[
@@ -51,32 +55,36 @@ class _UserScreenState extends State<UserScreen> {
                         text: 'MyName',
                         style: TextStyle(
                           color: color,
-                          fontSize: 24,
+                          fontSize: 25,
                           fontWeight: FontWeight.w600,
                         ),
                         recognizer: TapGestureRecognizer()
                           ..onTap = () {
-                            // ignore: avoid_print
-                            print("My name is press");
+                            print('My name is pressed');
                           }),
                   ],
                 ),
               ),
-              const SizedBox(height: 5),
+              const SizedBox(
+                height: 5,
+              ),
               TextWidget(
-                text: "Email@gmail.com",
+                text: 'Email@email.com',
                 color: color,
                 textSize: 18,
-                // isTitle :true,
+                // isTitle: true,
+              ),
+              const SizedBox(
+                height: 20,
               ),
               const Divider(
                 thickness: 2,
               ),
               const SizedBox(
-                height: 18,
+                height: 20,
               ),
               _listTiles(
-                title: "Address",
+                title: 'Address 2',
                 subtitle: 'My subtitle',
                 icon: IconlyLight.profile,
                 onPressed: () async {
@@ -85,7 +93,7 @@ class _UserScreenState extends State<UserScreen> {
                 color: color,
               ),
               _listTiles(
-                title: "Orders",
+                title: 'Orders',
                 icon: IconlyLight.bag,
                 onPressed: () {
                   GlobalMethods.navigateTo(
@@ -94,7 +102,7 @@ class _UserScreenState extends State<UserScreen> {
                 color: color,
               ),
               _listTiles(
-                title: "Wishlist",
+                title: 'Wishlist',
                 icon: IconlyLight.heart,
                 onPressed: () {
                   GlobalMethods.navigateTo(
@@ -103,7 +111,7 @@ class _UserScreenState extends State<UserScreen> {
                 color: color,
               ),
               _listTiles(
-                title: "Viewed",
+                title: 'Viewed',
                 icon: IconlyLight.show,
                 onPressed: () {
                   GlobalMethods.navigateTo(
@@ -112,7 +120,7 @@ class _UserScreenState extends State<UserScreen> {
                 color: color,
               ),
               _listTiles(
-                title: "Forget Password",
+                title: 'Forget password',
                 icon: IconlyLight.unlock,
                 onPressed: () {},
                 color: color,
@@ -122,10 +130,11 @@ class _UserScreenState extends State<UserScreen> {
                   text: themeState.getDarkTheme ? 'Dark mode' : 'Light mode',
                   color: color,
                   textSize: 18,
+                  // isTitle: true,
                 ),
                 secondary: Icon(themeState.getDarkTheme
                     ? Icons.dark_mode_outlined
-                    : Icons.wb_sunny_outlined),
+                    : Icons.light_mode_outlined),
                 onChanged: (bool value) {
                   setState(() {
                     themeState.setDarkTheme = value;
@@ -134,9 +143,9 @@ class _UserScreenState extends State<UserScreen> {
                 value: themeState.getDarkTheme,
               ),
               _listTiles(
-                title: "Logout",
+                title: 'Logout',
                 icon: IconlyLight.logout,
-                onPressed: () async {
+                onPressed: () {
                   GlobalMethods.warningDialog(
                       title: 'Sign out',
                       subtitle: 'Do you wanna sign out?',
@@ -145,108 +154,36 @@ class _UserScreenState extends State<UserScreen> {
                 },
                 color: color,
               ),
+              // listTileAsRow(),
             ],
           ),
         ),
       ),
-    );
+    ));
   }
 
   Future<void> _showAddressDialog() async {
     await showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text("Update"),
-          content: TextField(
-            // onChanged: (value){
-            //  //_addressTextController.text;
-
-            // },
-            controller: _addressTextController,
-            maxLines: 5,
-            style: TextStyle(
-              color: Theme.of(context).brightness == Brightness.dark
-                  ? Colors.black
-                  : Colors.black,
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Update'),
+            content: TextField(
+              // onChanged: (value) {
+              //   print('_addressTextController.text ${_addressTextController.text}');
+              // },
+              controller: _addressTextController,
+              maxLines: 5,
+              decoration: const InputDecoration(hintText: "Your address"),
             ),
-
-            decoration: const InputDecoration(
-              hintText: "Your address",
-              hintStyle: TextStyle(
-                color: Colors.black,
+            actions: [
+              TextButton(
+                onPressed: () {},
+                child: const Text('Update'),
               ),
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: const Text('Cancel'),
-            ),
-            TextButton(
-              onPressed: () {
-                // Do something with the updated address
-                // ignore: avoid_print
-                print(_addressTextController.text);
-                Navigator.of(context).pop(); // Close the dialog
-              },
-              child: const Text('Save'),
-            ),
-          ],
-        );
-      },
-    );
-  }
-
-  // ignore: unused_element
-  Future<void> _showLogoutDialog() async {
-    await showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Row(
-            children: [
-              Image.asset('assets/images/warning-sign.png',
-                  height: 20, width: 20, fit: BoxFit.fill),
-              const SizedBox(
-                width: 8,
-              ), // Add some spacing between image and text
-              const Text("Sign out"),
             ],
-          ),
-          content: const Text(
-            "Do you want to sign out",
-            style: TextStyle(
-              color: Colors.black,
-            ),
-          ),
-          actions: [
-            TextButton(
-              onPressed: () {
-                if (Navigator.canPop(context)) {
-                  Navigator.pop(context);
-                }
-              },
-              child: TextWidget(
-                text: 'Cancel',
-                color: Colors.cyan,
-                textSize: 18,
-              ),
-            ),
-            TextButton(
-              onPressed: () {},
-              child: TextWidget(
-                text: 'Ok',
-                color: Colors.red,
-                textSize: 18,
-              ),
-            ),
-          ],
-        );
-      },
-    );
+          );
+        });
   }
 
   Widget _listTiles({
@@ -261,10 +198,10 @@ class _UserScreenState extends State<UserScreen> {
         text: title,
         color: color,
         textSize: 22,
-        // isTitle :true,
+        // isTitle: true,
       ),
       subtitle: TextWidget(
-        text: subtitle ?? "",
+        text: subtitle == null ? "" : subtitle,
         color: color,
         textSize: 18,
       ),
@@ -275,4 +212,26 @@ class _UserScreenState extends State<UserScreen> {
       },
     );
   }
+
+// // Alternative code for the listTile.
+//   Widget listTileAsRow() {
+//     return Padding(
+//       padding: const EdgeInsets.all(8.0),
+//       child: Row(
+//         children: <Widget>[
+//           const Icon(Icons.settings),
+//           const SizedBox(width: 10),
+//           Column(
+//             crossAxisAlignment: CrossAxisAlignment.start,
+//             children: const [
+//               Text('Title'),
+//               Text('Subtitle'),
+//             ],
+//           ),
+//           const Spacer(),
+//           const Icon(Icons.chevron_right)
+//         ],
+//       ),
+//     );
+//   }
 }
