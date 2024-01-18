@@ -50,9 +50,9 @@ class _ProductDetailsState extends State<ProductDetails> {
       body: Column(children: [
         Flexible(
           flex: 2,
-          child: FancyShimmerImage(
-            imageUrl: 'https://i.ibb.co/F0s3FHQ/Apricots.png',
-            boxFit: BoxFit.scaleDown,
+          child: Image.asset(
+            'assets/images/sale/phone.png',
+            fit: BoxFit.scaleDown,
             width: size.width,
             // height: screenHeight * .4,
           ),

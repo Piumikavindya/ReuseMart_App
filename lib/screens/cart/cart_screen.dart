@@ -17,6 +17,7 @@ class CartScreen extends StatelessWidget {
     final Color color = Utils(context).color;
     // ignore: unused_local_variable
     Size size = Utils(context).getScreenSize;
+    // ignore: no_leading_underscores_for_local_identifiers
     bool _isEmpty = true;
     return _isEmpty
         ? const EmptyScreen(
@@ -57,7 +58,7 @@ class CartScreen extends StatelessWidget {
                   child: ListView.builder(
                     itemCount: 10,
                     itemBuilder: (ctx, index) {
-                      return CartWidget();
+                      return const CartWidget();
                     },
                   ),
                 ),

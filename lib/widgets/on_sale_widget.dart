@@ -1,4 +1,3 @@
-// ignore: unused_import
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -6,7 +5,6 @@ import 'package:reusemart_app/services/utils.dart';
 import 'package:reusemart_app/widgets/heart_btn.dart';
 import 'package:reusemart_app/widgets/text_widget.dart';
 
-// ignore: unused_import
 import '../inner_screens/on_sale_screen.dart';
 import '../inner_screens/product_details.dart';
 import '../services/global_methods.dart';
@@ -23,7 +21,6 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
   @override
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
-    // ignore: unused_local_variable
     final theme = Utils(context).getTheme;
     Size size = Utils(context).getScreenSize;
     return Padding(
@@ -48,7 +45,7 @@ class _OnSaleWidgetState extends State<OnSaleWidget> {
                     children: [
                       Image.asset(
                         'assets/images/sale/phone.png',
-                        height: size.width * 0.18,
+                        height: size.width * 0.22,
                         fit: BoxFit.fill,
                       ),
                       Column(

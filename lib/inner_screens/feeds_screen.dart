@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
-// ignore: unused_import
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:reusemart_app/consts/contss.dart';
+import 'package:reusemart_app/models/products_model.dart';
+import 'package:reusemart_app/providers/products_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../services/utils.dart';
 import '../widgets/back_widget.dart';
@@ -29,6 +32,8 @@ class _FeedsScreenState extends State<FeedsScreen> {
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
     Size size = Utils(context).getScreenSize;
+    final productProviders = Provider.of<ProductsProvider>(context);
+    List<ProductModel> allProducts = productProviders.getProducts;
     return Scaffold(
       appBar: AppBar(
         leading: const BackWidget(),
@@ -87,9 +92,12 @@ class _FeedsScreenState extends State<FeedsScreen> {
             crossAxisCount: 2,
             padding: EdgeInsets.zero,
             // crossAxisSpacing: 10,
-            childAspectRatio: size.width / (size.height * 0.59),
-            children: List.generate(10, (index) {
-              return const FeedsWidget();
+            childAspectRatio: size.width / (size.height * 0.7),
+            children: List.generate(allProducts.length, (index) {
+              return ChangeNotifierProvider.value(
+                value: allProducts[index],
+                child: const FeedsWidget(),
+              );
             }),
           ),
         ]),

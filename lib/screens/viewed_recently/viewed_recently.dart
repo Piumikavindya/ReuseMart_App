@@ -1,3 +1,5 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
+
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:reusemart_app/widgets/back_widget.dart';
@@ -14,6 +16,7 @@ class ViewedRecentlyScreen extends StatefulWidget {
   const ViewedRecentlyScreen({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ViewedRecentlyScreenState createState() => _ViewedRecentlyScreenState();
 }
 

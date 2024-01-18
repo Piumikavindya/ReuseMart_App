@@ -11,6 +11,7 @@ class HeartBTN extends StatelessWidget {
     final Color color = Utils(context).color;
     return GestureDetector(
       onTap: () {
+        // ignore: avoid_print
         print('print heart button is pressed');
       },
       child: Icon(

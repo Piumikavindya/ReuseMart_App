@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: dead_code
 
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
@@ -29,7 +29,6 @@ class OnSaleScreen extends StatelessWidget {
         ),
       ),
       body: _isEmpty
-          // ignore: dead_code
           ? Center(
               child: Padding(
                 padding: const EdgeInsets.all(8.0),
@@ -57,7 +56,7 @@ class OnSaleScreen extends StatelessWidget {
               crossAxisCount: 2,
               padding: EdgeInsets.zero,
               // crossAxisSpacing: 10,
-              childAspectRatio: size.width / (size.height * 0.45),
+              childAspectRatio: size.width / (size.height * 0.7),
               children: List.generate(16, (index) {
                 return const OnSaleWidget();
               }),

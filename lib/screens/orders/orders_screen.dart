@@ -21,6 +21,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
     // Size size = Utils(context).getScreenSize;
+    // ignore: no_leading_underscores_for_local_identifiers
     bool _isEmpty = true;
     return _isEmpty == true
         ? const EmptyScreen(

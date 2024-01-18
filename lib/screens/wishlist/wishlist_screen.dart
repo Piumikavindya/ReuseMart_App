@@ -1,4 +1,4 @@
-// ignore_for_file: unused_import
+// ignore_for_file: unused_import, no_leading_underscores_for_local_identifiers
 
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';

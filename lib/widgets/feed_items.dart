@@ -1,10 +1,10 @@
-// ignore_for_file: unused_import
-
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:reusemart_app/models/products_model.dart';
 import 'package:reusemart_app/widgets/price_widget.dart';
 import 'package:reusemart_app/widgets/text_widget.dart';
+import 'package:provider/provider.dart';
 
 import '../inner_screens/on_sale_screen.dart';
 import '../inner_screens/product_details.dart';
@@ -37,6 +37,8 @@ class _FeedsWidgetState extends State<FeedsWidget> {
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
     Size size = Utils(context).getScreenSize;
+    final productModel = Provider.of<ProductModel>(context);
+
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Material(
@@ -49,24 +51,28 @@ class _FeedsWidgetState extends State<FeedsWidget> {
           },
           borderRadius: BorderRadius.circular(12),
           child: Column(children: [
-            FancyShimmerImage(
-              imageUrl: 'https://i.ibb.co/F0s3FHQ/Apricots.png',
+            Image.asset(
+              'assets/images/sale/phone.png',
               height: size.width * 0.21,
               width: size.width * 0.2,
-              boxFit: BoxFit.fill,
+              fit: BoxFit.fill,
             ),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  TextWidget(
-                    text: 'Title',
-                    color: color,
-                    textSize: 20,
-                    isTitle: true,
+                  Flexible(
+                    flex: 3,
+                    child: TextWidget(
+                      text: productModel.title,
+                      color: color,
+                      maxLines: 1,
+                      textSize: 18,
+                      isTitle: true,
+                    ),
                   ),
-                  const HeartBTN(),
+                  const Flexible(flex: 1, child: HeartBTN()),
                 ],
               ),
             ),
@@ -134,6 +140,12 @@ class _FeedsWidgetState extends State<FeedsWidget> {
               width: double.infinity,
               child: TextButton(
                 onPressed: () {},
+                child: TextWidget(
+                  text: 'Add to cart',
+                  maxLines: 1,
+                  color: color,
+                  textSize: 20,
+                ),
                 style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all(Theme.of(context).cardColor),
@@ -146,12 +158,6 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                         ),
                       ),
                     )),
-                child: TextWidget(
-                  text: 'Add to cart',
-                  maxLines: 1,
-                  color: color,
-                  textSize: 20,
-                ),
               ),
             )
           ]),

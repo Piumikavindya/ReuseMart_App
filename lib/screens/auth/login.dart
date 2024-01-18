@@ -36,6 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
     final isValid = _formKey.currentState!.validate();
     FocusScope.of(context).unfocus();
     if (isValid) {
+      // ignore: avoid_print
       print('THe form is valid');
     }
   }
