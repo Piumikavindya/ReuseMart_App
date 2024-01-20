@@ -65,6 +65,7 @@ class EmptyScreen extends StatelessWidget {
                       color: color,
                     ),
                   ),
+                  // ignore: deprecated_member_use
                   primary: Theme.of(context).colorScheme.secondary,
                   // onPrimary: color,
                   padding:

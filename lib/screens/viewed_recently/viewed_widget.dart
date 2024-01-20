@@ -46,9 +46,9 @@ class _ViewedRecentlyWidgetState extends State<ViewedRecentlyWidget> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FancyShimmerImage(
-              imageUrl: getCurrProduct.imageUrl,
-              boxFit: BoxFit.fill,
+            Image.asset(
+              getCurrProduct.imageUrl,
+              fit: BoxFit.fill,
               height: size.width * 0.27,
               width: size.width * 0.25,
             ),

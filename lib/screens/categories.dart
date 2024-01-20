@@ -22,15 +22,15 @@ class CategoriesScreen extends StatelessWidget {
       'catText': 'Books',
     },
     {
-      'imgPath': 'assets/images/cat/veg.png',
+      'imgPath': 'assets/images/cat/appliances.png',
       'catText': 'Appliances',
     },
     {
-      'imgPath': 'assets/images/cat/Spinach.png',
+      'imgPath': 'assets/images/sale/phone.png',
       'catText': 'Mobiles',
     },
     {
-      'imgPath': 'assets/images/cat/nuts.png',
+      'imgPath': 'assets/images/cat/laptops.png',
       'catText': 'Laptops',
     },
   ];

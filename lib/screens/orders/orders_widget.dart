@@ -19,16 +19,17 @@ class _OrderWidgetState extends State<OrderWidget> {
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
     Size size = Utils(context).getScreenSize;
+    var getCurrProduct;
     return ListTile(
       subtitle: const Text('Paid: \$12.8'),
       onTap: () {
         GlobalMethods.navigateTo(
             ctx: context, routeName: ProductDetails.routeName);
       },
-      leading: FancyShimmerImage(
+      leading: Image.asset(
         width: size.width * 0.2,
-        imageUrl: 'https://i.ibb.co/F0s3FHQ/Apricots.png',
-        boxFit: BoxFit.fill,
+        getCurrProduct.imageUrl,
+        fit: BoxFit.fill,
       ),
       title: TextWidget(text: 'Title  x12', color: color, textSize: 18),
       trailing: TextWidget(text: '03/08/2022', color: color, textSize: 18),

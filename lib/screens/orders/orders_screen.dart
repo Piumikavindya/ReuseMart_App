@@ -1,4 +1,8 @@
+// ignore: duplicate_ignore
+// ignore_for_file: unused_import
+
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:reusemart_app/widgets/back_widget.dart';
 import 'package:reusemart_app/widgets/empty_screen.dart';
@@ -22,6 +26,7 @@ class _OrdersScreenState extends State<OrdersScreen> {
   Widget build(BuildContext context) {
     final Color color = Utils(context).color;
     // Size size = Utils(context).getScreenSize;
+    // ignore: no_leading_underscores_for_local_identifiers
     bool _isEmpty = true;
     return _isEmpty == true
         ? const EmptyScreen(

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:reusemart_app/inner_screens/feeds_screen.dart';
 import 'package:reusemart_app/inner_screens/on_sale_screen.dart';
+// ignore: unused_import
 import 'package:reusemart_app/provider/dark_theme_provider.dart';
 import 'package:reusemart_app/services/utils.dart';
 import 'package:reusemart_app/widgets/text_widget.dart';
@@ -26,6 +27,7 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final Utils utils = Utils(context);
+    // ignore: unused_local_variable
     final themeState = utils.getTheme;
     final Color color = Utils(context).color;
     Size size = utils.getScreenSize;

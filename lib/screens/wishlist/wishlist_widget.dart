@@ -51,9 +51,9 @@ class WishlistWidget extends StatelessWidget {
                   margin: const EdgeInsets.only(left: 8),
                   // width: size.width * 0.2,
                   height: size.width * 0.25,
-                  child: FancyShimmerImage(
-                    imageUrl: getCurrProduct.imageUrl,
-                    boxFit: BoxFit.fill,
+                  child: Image.asset(
+                    getCurrProduct.imageUrl,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),

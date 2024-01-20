@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:reusemart_app/widgets/on_sale_widget.dart';
 import 'package:reusemart_app/widgets/text_widget.dart';
@@ -39,7 +40,7 @@ class OnSaleScreen extends StatelessWidget {
               crossAxisCount: 2,
               padding: EdgeInsets.zero,
               // crossAxisSpacing: 10,
-              childAspectRatio: size.width / (size.height * 0.5),
+              childAspectRatio: size.width / (size.height * 0.6),
               children: List.generate(productsOnSale.length, (index) {
                 return ChangeNotifierProvider.value(
                   value: productsOnSale[index],

@@ -1,4 +1,4 @@
-// ignore_for_file: deprecated_member_use
+// ignore_for_file: deprecated_member_use, unused_import
 
 import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/cupertino.dart';
@@ -21,6 +21,7 @@ class ProductDetails extends StatefulWidget {
   const ProductDetails({Key? key}) : super(key: key);
 
   @override
+  // ignore: library_private_types_in_public_api
   _ProductDetailsState createState() => _ProductDetailsState();
 }
 
@@ -47,8 +48,10 @@ class _ProductDetailsState extends State<ProductDetails> {
         ? getCurrProduct.salePrice
         : getCurrProduct.price;
     double totalPrice = usedPrice * int.parse(_quantityTextController.text);
+    // ignore: no_leading_underscores_for_local_identifiers
     bool? _isInCart = cartProvider.getCartItems.containsKey(getCurrProduct.id);
 
+    // ignore: no_leading_underscores_for_local_identifiers
     bool? _isInWishlist =
         wishlistProvider.getWishlistItems.containsKey(getCurrProduct.id);
 

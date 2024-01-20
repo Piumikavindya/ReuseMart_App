@@ -110,7 +110,7 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                           flex: 6,
                           child: FittedBox(
                             child: TextWidget(
-                              text: productModel.isPiece ? 'Piece' : 'kg',
+                              text: productModel.isPiece ? 'Piece' : '10',
                               color: color,
                               textSize: 20,
                               isTitle: true,
@@ -159,12 +159,6 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                             productId: productModel.id,
                             quantity: int.parse(_quantityTextController.text));
                       },
-                child: TextWidget(
-                  text: _isInCart ? 'In cart' : 'Add to cart',
-                  maxLines: 1,
-                  color: color,
-                  textSize: 20,
-                ),
                 style: ButtonStyle(
                     backgroundColor:
                         MaterialStateProperty.all(Theme.of(context).cardColor),
@@ -177,6 +171,12 @@ class _FeedsWidgetState extends State<FeedsWidget> {
                         ),
                       ),
                     )),
+                child: TextWidget(
+                  text: _isInCart ? 'In cart' : 'Add to cart',
+                  maxLines: 1,
+                  color: color,
+                  textSize: 20,
+                ),
               ),
             )
           ]),

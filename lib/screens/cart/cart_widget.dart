@@ -1,4 +1,3 @@
-import 'package:fancy_shimmer_image/fancy_shimmer_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -9,11 +8,8 @@ import 'package:reusemart_app/widgets/heart_btn.dart';
 import 'package:reusemart_app/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 
-import '../../inner_screens/on_sale_screen.dart';
-import '../../models/products_model.dart';
 import '../../providers/cart_provider.dart';
 import '../../providers/wishlist_provider.dart';
-import '../../services/global_methods.dart';
 import '../../services/utils.dart';
 
 class CartWidget extends StatefulWidget {
@@ -49,6 +45,7 @@ class _CartWidgetState extends State<CartWidget> {
         : getCurrProduct.price;
     final cartProvider = Provider.of<CartProvider>(context);
     final wishlistProvider = Provider.of<WishlistProvider>(context);
+    // ignore: no_leading_underscores_for_local_identifiers
     bool? _isInWishlist =
         wishlistProvider.getWishlistItems.containsKey(getCurrProduct.id);
     return GestureDetector(
@@ -74,9 +71,9 @@ class _CartWidgetState extends State<CartWidget> {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(12.0),
                       ),
-                      child: FancyShimmerImage(
-                        imageUrl: getCurrProduct.imageUrl,
-                        boxFit: BoxFit.fill,
+                      child: Image.asset(
+                        getCurrProduct.imageUrl,
+                        fit: BoxFit.fill,
                       ),
                     ),
                     Column(

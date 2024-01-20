@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'package:flutter_iconly/flutter_iconly.dart';
+// ignore: unused_import
 import 'package:reusemart_app/consts/contss.dart';
 import 'package:reusemart_app/models/products_model.dart';
 import 'package:reusemart_app/providers/products_provider.dart';
@@ -20,11 +22,11 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-  final TextEditingController? _searchTextController = TextEditingController();
+  final TextEditingController _searchTextController = TextEditingController();
   final FocusNode _searchTextFocusNode = FocusNode();
   @override
   void dispose() {
-    _searchTextController!.dispose();
+    _searchTextController.dispose();
     _searchTextFocusNode.dispose();
     super.dispose();
   }
@@ -80,7 +82,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         prefixIcon: const Icon(Icons.search),
                         suffix: IconButton(
                           onPressed: () {
-                            _searchTextController!.clear();
+                            _searchTextController.clear();
                             _searchTextFocusNode.unfocus();
                           },
                           icon: Icon(

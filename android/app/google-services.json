@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1098354607165",
+    "project_id": "reusemart-app-74397",
+    "storage_bucket": "reusemart-app-74397.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1098354607165:android:5a93408948ee8ffd0d5654",
+        "android_client_info": {
+          "package_name": "com.example.reusemart_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1098354607165-g3hakij9790n6roi5gr17062u5q3bm2t.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.reusemart_app",
+            "certificate_hash": "d974e5d16cf647eb6d1a84045a36de6a43813e77"
+          }
+        },
+        {
+          "client_id": "1098354607165-irqbaim1smim2j6bmo4m9af2ej8niofl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDiB0z-ZhGDtK-FxXohgAbAtPXvSUC8bv0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1098354607165-irqbaim1smim2j6bmo4m9af2ej8niofl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
